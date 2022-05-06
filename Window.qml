@@ -33,6 +33,8 @@ ApplicationWindow {
     }
 
     Rect{width:parent.width;height: parent.height}
+//    Board{width:parent.width;height: parent.height}
+
 
 
 

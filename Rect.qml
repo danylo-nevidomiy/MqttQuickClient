@@ -59,6 +59,7 @@ Rectangle{
 
         Item{
             id:firstPage
+//            Board{}
         }
     }
 

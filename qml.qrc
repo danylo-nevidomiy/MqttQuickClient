@@ -3,5 +3,9 @@
         <file>main.qml</file>
         <file>Window.qml</file>
         <file>Rect.qml</file>
+        <file>Board.qml</file>
+        <file>arrow-upper-right.png</file>
+        <file>pngegg.png</file>
+        <file>Switch.qml</file>
     </qresource>
 </RCC>

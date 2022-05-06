@@ -1,4 +1,4 @@
-QT += quick core network mqtt
+QT += qml quick quickwidgets core network mqtt
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -7,11 +7,13 @@ CONFIG += c++11 qmltypes
 
 
 SOURCES += \
-        connectionitem.cpp \
+        boarditem.cpp \
         indicatoritem.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
+                arrow-upper-right.png
+                pngegg.png
 
 QML_IMPORT_NAME = MqttClient
 QML_IMPORT_MAJOR_VERSION = 1
@@ -27,5 +29,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    connectionitem.h \
+    boarditem.h \
     indicatoritem.h
