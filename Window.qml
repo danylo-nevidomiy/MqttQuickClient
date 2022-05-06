@@ -32,10 +32,16 @@ ApplicationWindow {
         }
     }
 
-    Rect{width:parent.width;height: parent.height}
+    Rectangle{
+        id:root
+        width: 1024
+        height: 600
+        color: "lightgreen"
+//    Rect{width:parent.width;height: parent.height}
+        SwitchItem{}
 //    Board{width:parent.width;height: parent.height}
 
-
+}
 
 
 

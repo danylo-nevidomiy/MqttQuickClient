@@ -7,6 +7,7 @@ CONFIG += c++11 qmltypes
 
 
 SOURCES += \
+        baseitem.cpp \
         boarditem.cpp \
         indicatoritem.cpp \
         main.cpp
@@ -29,5 +30,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    baseitem.h \
     boarditem.h \
     indicatoritem.h

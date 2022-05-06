@@ -60,6 +60,7 @@ Rectangle{
         Item{
             id:firstPage
 //            Board{}
+            SwitchItem{}
         }
     }
 

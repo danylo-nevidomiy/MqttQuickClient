@@ -6,6 +6,6 @@
         <file>Board.qml</file>
         <file>arrow-upper-right.png</file>
         <file>pngegg.png</file>
-        <file>Switch.qml</file>
+        <file>SwitchItem.qml</file>
     </qresource>
 </RCC>
