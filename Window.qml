@@ -2,6 +2,7 @@ import QtQuick
 import QtCore
 import QtQuick.Window
 import QtQuick.Controls
+import MqttClient 1.0
 //import "/Rect.qml" as rc
 
 ApplicationWindow {
@@ -38,7 +39,9 @@ ApplicationWindow {
         height: 600
         color: "lightgreen"
 //    Rect{width:parent.width;height: parent.height}
-        SwitchItem{}
+//        SwitchItem{}
+        Input{}
+        Value{}
 //    Board{width:parent.width;height: parent.height}
 
 }

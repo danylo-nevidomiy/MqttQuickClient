@@ -7,5 +7,7 @@
         <file>arrow-upper-right.png</file>
         <file>pngegg.png</file>
         <file>SwitchItem.qml</file>
+        <file>Input.qml</file>
+        <file>Value.qml</file>
     </qresource>
 </RCC>

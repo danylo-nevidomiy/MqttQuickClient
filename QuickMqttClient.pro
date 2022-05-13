@@ -7,10 +7,11 @@ CONFIG += c++11 qmltypes
 
 
 SOURCES += \
-        baseitem.cpp \
         boarditem.cpp \
         indicatoritem.cpp \
-        main.cpp
+        inputitem.cpp \
+        main.cpp \
+        mqttitem.cpp
 
 RESOURCES += qml.qrc
                 arrow-upper-right.png
@@ -30,6 +31,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    baseitem.h \
     boarditem.h \
-    indicatoritem.h
+    indicatoritem.h \
+    inputitem.h \
+    mqttitem.h
