@@ -22,7 +22,7 @@ MqttItem::MqttItem()
                 emit messageChanged();
             }
     });
-//    connect(m_client, &QMqttClient::messageReceived, this, &MqttItem::messageReceivedSlot);
+    QObject::connect(m_client, SIGNAL(messageReceived(QByteArray,QMqttTopicName)), this, SLOT(messageReceivedSlot(QByteArray,QMqttTopicName)));
 }
 
 void MqttItem::subscribeTopic(const QMqttTopicFilter &topic)
@@ -38,6 +38,7 @@ void MqttItem::unsubscribeTopic(const QMqttTopicFilter &topic)
 qint32 MqttItem::publishInTopic(const QString &topic, const QString &message)
 {
     m_client->publish(topic, message.toUtf8());
+    return 0;
 }
 
 const QString &MqttItem::getTopic() const
@@ -135,6 +136,12 @@ void MqttItem::setOnValue(const QString &newOnValue)
         return;
     m_onValue = newOnValue;
     emit onValueChanged();
+}
+
+void MqttItem::emitReceivedMessage()
+{
+    m_message = QString("messageChanged!!!!!");
+    emit messageChanged();
 }
 
 void MqttItem::messageReceivedSlot(const QByteArray &message, const QMqttTopicName &topic)

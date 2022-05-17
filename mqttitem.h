@@ -21,12 +21,12 @@ class MqttItem : public QQuickItem
     QML_ELEMENT
 public:
     MqttItem();
-    void subscribeTopic(const QMqttTopicFilter &topic);
+    Q_INVOKABLE void subscribeTopic(const QMqttTopicFilter &topic);
     void unsubscribeTopic(const QMqttTopicFilter &topic);
     Q_INVOKABLE qint32 publishInTopic(const QString &topic, const QString &message);
     const QString &getTopic() const;
-    void setTopic(const QString &newTopic);
-    Q_INVOKABLE void changeTopic(const QString &newTopic);
+    Q_INVOKABLE void setTopic(const QString &newTopic);
+    void changeTopic(const QString &newTopic);
     const QString &getName() const;
     Q_INVOKABLE void setName(const QString &newName);
 
@@ -44,6 +44,9 @@ public:
     Q_INVOKABLE void sendOnValue(const QString &OnValue);
     Q_INVOKABLE void setOnValue(const QString &newOnValue);
 
+    Q_INVOKABLE void emitReceivedMessage();
+
+
 signals:
     void topicChanged();
 
@@ -57,16 +60,16 @@ signals:
 
     void onValueChanged();
 
-private slots:
-    void messageReceivedSlot(const QByteArray &message, const QMqttTopicName &topic);
-
+public slots:
+void messageReceivedSlot(const QByteArray &message, const QMqttTopicName &topic);
 private:
-    QMqttClient* m_client;
+    QMqttClient *m_client;
     QString m_topic;
     QString m_name;
     QString m_message;
     QString m_offValue = "0";
     QString m_onValue = "1";
+
 
 
 

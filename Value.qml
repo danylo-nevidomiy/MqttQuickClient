@@ -4,15 +4,18 @@ import QtQuick.Controls 6.2
 
 
 Item {
-    id:input
+    id:value
     width:400
     height:300
+    property string name: "label.name"
+    property string topic: "topic"
 
     MqttItem{
         id:initem
         anchors.fill: parent
         onNameChanged: name.text = initem.name
-        onMessageChanged: message.text = initem.message
+        onMessageChanged: { console.log("onMessageChanged")
+            message.text = initem.m_message}
         Rectangle{
             anchors.fill: parent
 
@@ -23,14 +26,14 @@ Item {
                     spacing: 5
 
                     Rectangle {/* color: "lightblue"; radius: 10.0*/
-                                width: input.width; height: 50
+                                width: value.width; height: 50
                                 Label { id: message; anchors.centerIn: parent
                                 text: qsTr("Message")} }
                     Rectangle {/* color: "gold"; radius: 10.0*/
-                                width: input.width; height: 50
+                                width: value.width; height: 50
                                 Label {
                                     id: name
-                                    text: qsTr("Label")
+                                    text: value.name
                                     anchors.centerIn: parent } }
 
 
@@ -38,6 +41,8 @@ Item {
 
         }
     }
-    Component.onCompleted: initem.m_topic = "value"
+    Component.onCompleted: {initem.setTopic(value.topic)
+        initem.emitReceivedMessage()
+        initem.m_topic = value.topic}
 
 }

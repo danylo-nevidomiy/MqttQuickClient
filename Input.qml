@@ -7,6 +7,8 @@ Item {
     id:input
     width:400
     height:300
+    property string name: "label.name"
+    property string topic: "topic"
 
     InputItem{
         id:initem
@@ -30,13 +32,13 @@ Item {
                                 width: input.width; height: 50
                                 Button { id: send; anchors.centerIn: parent
                                 text: qsTr("Publish")
-                                onClicked:{initem.publishInTopic(initem.topic, textField.text)
+                                onClicked:{initem.publishInTopic(initem.m_topic, textField.text)
                                     /*initem.message = textField.text*/}} }
                     Rectangle {/* color: "gold"; radius: 10.0*/
                                 width: input.width; height: 50
                                 Label {
                                     id: name
-                                    text: qsTr("Label")
+                                    text: input.name
                                     anchors.centerIn: parent } }
 
 
@@ -44,6 +46,6 @@ Item {
 
         }
     }
-    Component.onCompleted: initem.m_topic = "input"
+    Component.onCompleted: initem.m_topic = input.topic
 
 }

@@ -9,5 +9,7 @@
         <file>SwitchItem.qml</file>
         <file>Input.qml</file>
         <file>Value.qml</file>
+        <file>Space.qml</file>
+        <file>Chart.qml</file>
     </qresource>
 </RCC>

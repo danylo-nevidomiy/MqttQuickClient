@@ -35,14 +35,17 @@ ApplicationWindow {
 
     Rectangle{
         id:root
-        width: 1024
-        height: 600
+        anchors.fill: parent
         color: "lightgreen"
 //    Rect{width:parent.width;height: parent.height}
 //        SwitchItem{}
-        Input{}
-        Value{}
+//        Input{}
+//        Value{}
 //    Board{width:parent.width;height: parent.height}
+
+             Space{color: "black";anchors.fill: parent}
+
+
 
 }
 
