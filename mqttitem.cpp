@@ -7,7 +7,9 @@ MqttItem::MqttItem()
     m_client = new QMqttClient();
     m_client->setHostname("localhost");
     m_client->setPort(1883);
+    //    qDebug() << m_client->state();
     m_client->connectToHost();
+//    m_client->subscribe(QString("topic"));
     connect(m_client, &QMqttClient::messageReceived, this, [this](const QByteArray &message, const QMqttTopicName &topic) {
         const QString content = QDateTime::currentDateTime().toString()
                 + QLatin1String(" Received Topic: ")
@@ -16,18 +18,25 @@ MqttItem::MqttItem()
                 + message
                 + QLatin1Char('\n');
         qDebug() << content;
-            if(QString::compare(topic.name(), getTopic()) == 0)
-            {
-                m_message = message;
-                emit messageChanged();
-            }
+        if(QString::compare(topic.name(), getTopic()) == 0)
+        {
+            m_message = message;
+            emit messageChanged();
+        }
     });
     QObject::connect(m_client, SIGNAL(messageReceived(QByteArray,QMqttTopicName)), this, SLOT(messageReceivedSlot(QByteArray,QMqttTopicName)));
 }
 
 void MqttItem::subscribeTopic(const QMqttTopicFilter &topic)
 {
-    m_client->subscribe(topic);
+    QMqttSubscription* sub = m_client->subscribe(topic);
+    if(sub == nullptr){
+        qDebug() << "null";
+        connect(m_client, &QMqttClient::connected, this, [this, topic]() {
+            m_client->subscribe(topic);
+        });
+
+    }
 }
 
 void MqttItem::unsubscribeTopic(const QMqttTopicFilter &topic)
@@ -57,6 +66,7 @@ void MqttItem::setTopic(const QString &newTopic)
 
 void MqttItem::changeTopic(const QString &newTopic)
 {
+    qDebug() << "topic: " << newTopic;
     unsubscribeTopic(m_topic);
     subscribeTopic(newTopic);
 }
@@ -81,9 +91,9 @@ const QString &MqttItem::getMessage() const
 
 void MqttItem::sendMessage(const QString &newMessage)
 {
-//    client = new QMqttClient();
-//    client->setHostname("localhost");
-//    client->setPort(1883);
+    //    client = new QMqttClient();
+    //    client->setHostname("localhost");
+    //    client->setPort(1883);
     m_client->publish(m_topic, newMessage.toUtf8());
     m_message = newMessage;
     emit messageChanged();
@@ -140,15 +150,17 @@ void MqttItem::setOnValue(const QString &newOnValue)
 
 void MqttItem::emitReceivedMessage()
 {
-    m_message = QString("messageChanged!!!!!");
-    emit messageChanged();
+//    m_message = QString("messageChanged!!!!!");
+    qDebug() << m_client->state();
+//    changeTopic(QString("topic"));
+//    emit messageChanged();
 }
 
 void MqttItem::messageReceivedSlot(const QByteArray &message, const QMqttTopicName &topic)
 {
     if(QString::compare(topic.name(), getTopic()) == 0)
-                {
-                    m_message = message;
-                    emit messageChanged();
-                }
+    {
+        m_message = message;
+        emit messageChanged();
+    }
 }

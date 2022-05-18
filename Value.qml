@@ -20,29 +20,29 @@ Item {
             anchors.fill: parent
 
             Column {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
 
-                    spacing: 5
+                spacing: 5
 
-                    Rectangle {/* color: "lightblue"; radius: 10.0*/
-                                width: value.width; height: 50
-                                Label { id: message; anchors.centerIn: parent
-                                text: qsTr("Message")} }
-                    Rectangle {/* color: "gold"; radius: 10.0*/
-                                width: value.width; height: 50
-                                Label {
-                                    id: name
-                                    text: value.name
-                                    anchors.centerIn: parent } }
+                Rectangle {
+                    width: value.width; height: 50
+                    Label { id: message; anchors.centerIn: parent
+                        text: qsTr("Message")} }
+                Rectangle {
+                    width: value.width; height: 50
+                    Label {
+                        id: name
+                        text: value.name
+                        anchors.centerIn: parent }}
 
 
             }
 
         }
     }
-    Component.onCompleted: {initem.setTopic(value.topic)
-        initem.emitReceivedMessage()
-        initem.m_topic = value.topic}
+    Component.onCompleted: {
+        initem.setTopic(value.topic)
+    }
 
 }
