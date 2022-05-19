@@ -10,7 +10,7 @@ Item {
     property string name: "label.name"
     property string topic: "topic"
 
-    InputItem{
+    MqttItem{
         id:initem
         anchors.fill: parent
         onNameChanged: name.text = initem.name

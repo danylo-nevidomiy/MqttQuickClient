@@ -8,8 +8,9 @@ CONFIG += c++11 qmltypes
 
 SOURCES += \
         boarditem.cpp \
+        chartitem.cpp \
+        chartregisterer.cpp \
         indicatoritem.cpp \
-        inputitem.cpp \
         main.cpp \
         mqttitem.cpp
 
@@ -32,6 +33,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     boarditem.h \
+    chartitem.h \
+    chartregisterer.h \
     indicatoritem.h \
-    inputitem.h \
     mqttitem.h

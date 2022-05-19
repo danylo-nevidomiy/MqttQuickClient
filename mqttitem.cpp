@@ -10,20 +10,20 @@ MqttItem::MqttItem()
     //    qDebug() << m_client->state();
     m_client->connectToHost();
 //    m_client->subscribe(QString("topic"));
-    connect(m_client, &QMqttClient::messageReceived, this, [this](const QByteArray &message, const QMqttTopicName &topic) {
-        const QString content = QDateTime::currentDateTime().toString()
-                + QLatin1String(" Received Topic: ")
-                + topic.name()
-                + QLatin1String(" Message: ")
-                + message
-                + QLatin1Char('\n');
-        qDebug() << content;
-        if(QString::compare(topic.name(), getTopic()) == 0)
-        {
-            m_message = message;
-            emit messageChanged();
-        }
-    });
+//    connect(m_client, &QMqttClient::messageReceived, this, [this](const QByteArray &message, const QMqttTopicName &topic) {
+//        const QString content = QDateTime::currentDateTime().toString()
+//                + QLatin1String(" Received Topic: ")
+//                + topic.name()
+//                + QLatin1String(" Message: ")
+//                + message
+//                + QLatin1Char('\n');
+//        qDebug() << content;
+//        if(QString::compare(topic.name(), getTopic()) == 0)
+//        {
+//            m_message = message;
+//            emit messageChanged();
+//        }
+//    });
     QObject::connect(m_client, SIGNAL(messageReceived(QByteArray,QMqttTopicName)), this, SLOT(messageReceivedSlot(QByteArray,QMqttTopicName)));
 }
 
