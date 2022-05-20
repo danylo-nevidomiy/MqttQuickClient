@@ -1,80 +1,72 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtCharts 2.3
-import QtQuick.Controls 2.4
+import QtQuick 2.5
+import QtQuick.Controls
+import QtQuick.Layouts 1.1
 
-Window {
-    visible: true
-    width: 1200
-    height: 800
-    title: "Charts"
-
-    ListModel {
-        id: modelId
-    }
-
+Item{
+    width: 480
+    height: 480
     Rectangle {
-        id: rectId
-        color: "pink"
-        anchors.fill: parent
+        visible: true
+       anchors.fill: parent
+        //    title: qsTr("Hello World")
 
-        GridView {
-            id: mGridViewId
+        GridLayout {
+            id: grid
             anchors.fill: parent
-            cellWidth: 300; cellHeight: 300
-            model: modelId
-            delegate: Rectangle {
-                width: mGridViewId.cellWidth;
-                height: mGridViewId.cellHeight
-                color: mColor
 
-                ChartView {
-                    width: parent.width;
-                    height: parent.height
+            rows: 3
+            columns: 3
 
-                    LineSeries {
-                        name: "LineSeries"
-                        XYPoint { x: 0; y: 0 }
-                        XYPoint { x: 1.1; y: 2.1 }
-                        XYPoint { x: 1.9; y: 3.3 }
-                    }
+            Rectangle {
+                color: "red"
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                Layout.columnSpan: 1
+                Layout.rowSpan: 1
+                Layout.row: 0
+                Layout.column: 0
+                //            SwitchItem{name:"SwitchName1"}
+            }
 
-                }
+            Rectangle {
+                color: "blue"
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                Layout.columnSpan: 1
+                Layout.rowSpan: 1
+                Layout.row: 1
+                Layout.column: 1
+            }
+
+            Rectangle {
+                color: "green"
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                Layout.columnSpan: 1
+                Layout.rowSpan: 1
+                Layout.row: 2
+                Layout.column: 2
+            }
+
+            Rectangle {
+                color: "white"
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                Layout.columnSpan: 1
+                Layout.rowSpan: 1
+                Layout.row: 1
+                Layout.column: 2
+            }
+
+            Rectangle {
+                color: "yellow"
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                Layout.columnSpan: 1
+                Layout.rowSpan: 1
+                Layout.row: 2
+                Layout.column: 1
             }
         }
     }
-
-    Column {
-        anchors.centerIn: parent
-        Row {
-            Button {
-                text: "add chart"
-
-                onClicked: {
-                   modelId.append({'mColor': 'blue'})
-                }
-            }
-
-
-            Button {
-                text: "remove chart"
-
-                onClicked: {
-                    modelId.remove(0)
-                }
-            }
-        }
-
-        Button {
-            anchors.horizontalCenter: parent.horizontalCenter
-            text: "add line series"
-
-            onClicked: {
-                var chart = modelId.get(0)
-                chart.removeAllSeries();
-            }
-        }
-
-    }
-
 }

@@ -5,7 +5,9 @@ ChartItem::ChartItem()
     //    connect()
 }
 
-void ChartItem::AddValue()
+void ChartItem::AddValue(double y)
 {
+
+   m_arr.append(y);
 
 }

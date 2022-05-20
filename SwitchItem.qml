@@ -8,7 +8,7 @@ Item {
     width: 300; height: 200
     property string name: "label.name"
     property string topic: "topic"
-    InputItem{
+    MqttItem{
         id:switem
         anchors.fill: parent
         onNameChanged: name.text = initem.name
