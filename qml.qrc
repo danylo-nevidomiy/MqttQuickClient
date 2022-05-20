@@ -11,5 +11,10 @@
         <file>Value.qml</file>
         <file>Space.qml</file>
         <file>Chart.qml</file>
+        <file>Widget.qml</file>
+        <file>BaseItem.qml</file>
+        <file>SwitchNewItem.qml</file>
+        <file>ValueItem.qml</file>
+        <file>InputItem.qml</file>
     </qresource>
 </RCC>

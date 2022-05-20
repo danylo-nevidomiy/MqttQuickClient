@@ -5,8 +5,10 @@ import QtQuick.Controls 6.2
 
 Item {
     id:input
-    width:400
-    height:300
+//    width:400
+//    height:300
+    anchors.fill: parent
+
     property string name: "label.name"
     property string topic: "topic"
 
@@ -24,17 +26,20 @@ Item {
 
                     spacing: 5
 
-                    Rectangle {/* color: "lightblue"; radius: 10.0*/
+                    Rectangle {
+                                id:first
                                 width: input.width; height: 50
                                 TextField { id: textField; anchors.centerIn: parent
                                 placeholderText: qsTr("Text Field")} }
-                    Rectangle {/* color: "lightblue"; radius: 10.0*/
+                    Rectangle {
+                                id:second
                                 width: input.width; height: 50
                                 Button { id: send; anchors.centerIn: parent
                                 text: qsTr("Publish")
                                 onClicked:{initem.publishInTopic(initem.m_topic, textField.text)
-                                    /*initem.message = textField.text*/}} }
-                    Rectangle {/* color: "gold"; radius: 10.0*/
+                                    }} }
+                    Rectangle {
+                        id:third
                                 width: input.width; height: 50
                                 Label {
                                     id: name

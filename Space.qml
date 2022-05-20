@@ -55,26 +55,49 @@ Item {
                 Layout.rowSpan: 1
                 Layout.row: 2
                 Layout.column: 2
+                Input{}
             }
 
-            Rectangle {
-                color: "white"
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                Layout.columnSpan: 1
-                Layout.rowSpan: 1
-                Layout.row: 1
+//            Rectangle {
+//                color: "white"
+//                Layout.fillHeight: true
+//                Layout.fillWidth: true
+//                Layout.columnSpan: 1
+//                Layout.rowSpan: 1
+//                Layout.row: 1
+//                Layout.column: 2
+//            }
+            InputItem{
+                row: 1
+                column: 2
+                name: "My new Input item"
+                topic: "topic"
+            }
+
+//            Rectangle {
+//                color: "yellow"
+//                Layout.fillHeight: true
+//                Layout.fillWidth: true
+//                Layout.columnSpan: 1
+//                Layout.rowSpan: 1
+//                Layout.row: 2
+//                Layout.column: 1
+//            }
+            ValueItem{
+                row: 2
+                column: 1
+                name: "My new value item"
+                topic: "topic"
+            }
+            Widget{
+                Layout.row: 0
                 Layout.column: 2
             }
-
-            Rectangle {
-                color: "yellow"
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                Layout.columnSpan: 1
-                Layout.rowSpan: 1
-                Layout.row: 2
-                Layout.column: 1
+            SwitchNewItem{
+                row: 2
+                column: 0
+                name: "My new switch item"
+                topic: "topic"
             }
         }
 //        GridLayout {

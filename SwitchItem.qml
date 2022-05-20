@@ -5,9 +5,11 @@ import QtCharts 6.2
 
 Item {
     id: switemroot
-    width: 300; height: 200
+    anchors.fill: parent
+    //    width: 300; height: 200
     property string name: "label.name"
     property string topic: "topic"
+    property Item children: Item{}
     MqttItem{
         id:switem
         anchors.fill: parent
@@ -23,29 +25,24 @@ Item {
                 spacing: 5
 
                 Rectangle { /*color: "lightblue"; radius: 10.0*/
-                    width: root.width; height: 50
-                    Switch { id: switch1; anchors.centerIn: parent
-                        text: qsTr("Switch")
-                        checked: false
-                    onClicked: {
-                        if(switch1.checked === true){
-                        switem.publishInTopic(switem.m_topic, switem.m_onValue)}
-                        else{
-                        switem.publishInTopic(switem.m_topic, switem.m_offValue)}
-                        }} }
-                Rectangle { /*color: "gold"; radius: 10.0*/
-                    width: root.width; height: 50
-                    Label {
-                        id: label
-                        text: switemroot.name
-                        anchors.centerIn: parent } }
+                    id:content
+                    children: switemroot.children
+                    width: switem.width; height: 50
+
+                    Rectangle { /*color: "gold"; radius: 10.0*/
+                        width: switem.width; height: 50
+                        Label {
+                            id: label
+                            text: switemroot.name
+                            anchors.centerIn: parent } }
+                }
+
             }
-
+            Component.onCompleted: switem.m_topic = switemroot.topic
         }
-        Component.onCompleted: switem.m_topic = switemroot.topic
+
+
     }
-
-
 }
 
 
