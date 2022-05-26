@@ -16,5 +16,7 @@
         <file>SwitchNewItem.qml</file>
         <file>ValueItem.qml</file>
         <file>InputItem.qml</file>
+        <file>IndicatorItem.qml</file>
+        <file>speedometer-needle.jpeg</file>
     </qresource>
 </RCC>

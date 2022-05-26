@@ -24,7 +24,7 @@ import QtCharts 6.2
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
 
-                spacing: 5
+//                spacing: 5
 
 //                Rectangle {
 //                    visible:false
@@ -44,7 +44,7 @@ import QtCharts 6.2
                 }
                 Rectangle {
                     id:third
-                    width: baseitem.width; height: 50
+                    width: baseitem.width; height: name.height
                     Label {
                         id: name
                         text: baseitem.name

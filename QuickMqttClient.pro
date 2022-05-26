@@ -15,8 +15,6 @@ SOURCES += \
         mqttitem.cpp
 
 RESOURCES += qml.qrc
-                arrow-upper-right.png
-                pngegg.png
 
 QML_IMPORT_NAME = MqttClient
 QML_IMPORT_MAJOR_VERSION = 1

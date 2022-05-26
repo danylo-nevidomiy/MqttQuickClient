@@ -43,7 +43,7 @@ ApplicationWindow {
 //        Value{}
 //    Board{width:parent.width;height: parent.height}
 
-             Space{color: "black";anchors.fill: parent}
+             Space{color: "green";anchors.fill: parent}
 
 
 
