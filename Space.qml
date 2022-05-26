@@ -24,7 +24,10 @@ Item {
                 topic: "topic"
             }
             IndicatorItem{
-
+                row: 1
+                column: 0
+                name: "My new indicator item"
+                topic: "topic"
             }
             SwitchNewItem{
                 row: 0

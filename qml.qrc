@@ -18,5 +18,8 @@
         <file>InputItem.qml</file>
         <file>IndicatorItem.qml</file>
         <file>speedometer-needle.jpeg</file>
+        <file>needle.png</file>
+        <file>needle_shadow.png</file>
+        <file>overlay.png</file>
     </qresource>
 </RCC>

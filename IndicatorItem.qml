@@ -9,7 +9,7 @@ Rectangle {
     property string name;
     property string topic;
     property int column: 0
-    property int row: 1
+    property int row: 0
     Layout.fillHeight: true
     Layout.fillWidth: true
     Layout.columnSpan: 1
@@ -20,7 +20,12 @@ Rectangle {
 
     MqttItem {
         id:baseitem
+//        name:root.name
+//        topic:root.topic
         anchors.fill:parent
+        property int value: 0
+        onMessageChanged: {
+            baseitem.value = Number(baseitem.m_message)}
         Rectangle{
             anchors.fill:parent
             color: "yellow"
@@ -32,25 +37,58 @@ Rectangle {
 
 
                 Rectangle{
+                    id:first
                     width: baseitem.width; height: baseitem.height-third.height
                     Image {
-                        width:parent.height/sourceSize.height*sourceSize.width
-                        height:parent.height/sourceSize.height*sourceSize.height
-                        anchors.centerIn: parent
-//                        x:(parent.width-parent.height)/2
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        anchors.right: parent.right
+                        anchors.left: parent.left
+                        fillMode: Image.PreserveAspectFit
                         source: "speedometer-needle.jpeg"//"pngegg.png"
                     }
+                    Image {
+                        id: needle
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+                        height:parent.height/2
+                        width: sourceSize.width/sourceSize.height*needle.height
+//                        anchors.top: parent.top
+//                        anchors.bottom: parent.bottom
+//                        anchors.right: parent.right
+//                        anchors.left: parent.left
+//                        fillMode: Image.PreserveAspectFit
+                        antialiasing: true
+                        source: "needle.png"
+                        transform: Rotation {
+                            id: needleRotation
+                            origin.x: needle.width/2; origin.y: needle.height
+                            //! [needle angle]
+                            angle: baseitem.value//Math.min(Math.max(-130, root.value*2.6 - 130), 133)
+                            Behavior on angle {
+                                SpringAnimation {
+                                    spring: 1.4
+                                    damping: .15
+                                }
+                            }
+                            //! [needle angle]
+                        }
+//                         Component.onCompleted: {console.log("n.h: " + needle.height)}
+                    }
+//                    Component.onCompleted: {console.log("f.h: " + first.height)}
                 }
                 Rectangle {
                     id:third
                     width: baseitem.width; height: name.height*2
-//                    Layout.minimumHeight:name.minimumPixelSize
                     Label {
                         id: name
-                        text: qsTr("Label")//baseitem.name
+                        text: root.name
                         anchors.centerIn: parent } }
 
             }
+        }
+        Component.onCompleted: {
+            baseitem.setTopic(root.topic)
         }
     }
 }
