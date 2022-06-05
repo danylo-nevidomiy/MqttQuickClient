@@ -7,11 +7,10 @@ FileDialog {
     fileMode: FileDialog.OpenFile
     title: "Please choose a file";
     nameFilters: ["QML Files (*.qml)"];
-    //        selectedFile: true
-    //        selectExisting: true
     onAccepted: {
         console.log("Selected = " + openDialog.selectedFile)
-        multiview.push(openDialog.selectedFile)
+//        multiview.push(openDialog.selectedFile)
+        board.openSpace(openDialog.selectedFile)
     }
 }
 

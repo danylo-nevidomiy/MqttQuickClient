@@ -4,8 +4,6 @@ import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Dialogs
 import MqttClient 1.0
-//import "InitialItem.qml" as II
-//import "/Rect.qml" as rc
 
 ApplicationWindow {
     id: window
@@ -13,18 +11,6 @@ ApplicationWindow {
     height: 600
     visible: true
     property string source;
-
-//    Loader{
-//        id:dialLoader
-//        source: "Board.qml"
-//    }
-//    Connections{
-//        target: dialLoader.item
-//        function onchooseQML()
-//        {
-//            openDialog.open()
-//        }
-//    }
     Loader {
 
         id: openDialog
@@ -55,23 +41,7 @@ ApplicationWindow {
             Action { text: qsTr("&About") }
         }
     }
-
-
-//    Rectangle{
-//        id:root
-//        anchors.fill: parent
-//        color: "lightgreen"
-//    Rect{width:parent.width;height: parent.height}
-//        SwitchItem{}
-//        Input{}
-//        Value{}
     Board{id:board}
-
-//             Space{color: "green";anchors.fill: parent}
-
-
-
-//}
 
 
 

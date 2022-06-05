@@ -14,7 +14,7 @@ Rectangle{
         Button{
             text: qsTr("select")
             onClicked: {
-                board.chooseQML()
+//                board.chooseQML()
                 console.log("Selected = ")
                 openDialog.item.open()
             }
