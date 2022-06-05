@@ -14,6 +14,8 @@ import QtCharts 6.2
         onNameChanged: name.text = baseitem.name
         property string name;
         property string topic;
+        property string on_value;
+        property string off_value;
         property Item first;
         property Item second;
         Rectangle{

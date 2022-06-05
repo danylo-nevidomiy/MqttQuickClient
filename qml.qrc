@@ -21,5 +21,9 @@
         <file>needle.png</file>
         <file>needle_shadow.png</file>
         <file>overlay.png</file>
+        <file>ButtonItem.qml</file>
+        <file>SpaceCreator.js</file>
+        <file>InitialItem.qml</file>
+        <file>OpenDialog.qml</file>
     </qresource>
 </RCC>

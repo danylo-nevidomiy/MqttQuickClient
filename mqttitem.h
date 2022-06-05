@@ -15,8 +15,8 @@ class MqttItem : public QQuickItem
     Q_PROPERTY(QString m_name READ getName WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString m_message READ getMessage WRITE sendMessage NOTIFY messageChanged)
     Q_PROPERTY(QMqttClient *m_client READ getClient WRITE setClient NOTIFY clientChanged)
-    Q_PROPERTY(QString m_offValue READ getOffValue WRITE sendOffValue NOTIFY offValueChanged)
-    Q_PROPERTY(QString m_onValue READ getOnValue WRITE sendOnValue NOTIFY onValueChanged)
+    Q_PROPERTY(QString m_offValue READ getOffValue WRITE setOffValue NOTIFY offValueChanged)
+    Q_PROPERTY(QString m_onValue READ getOnValue WRITE setOnValue NOTIFY onValueChanged)
     //    Q_MOC_INCLUDE("mqttitem.h")
     QML_ELEMENT
 public:

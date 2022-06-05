@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
 //    qmlRegisterType<BoardItem>("BoardItem",1,0,"BoardItem");
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/Window.qml"));
-    ChartItem ch;
-      engine.rootContext()->setContextProperty("chartitem",&ch);
+//    ChartItem ch;
+//      engine.rootContext()->setContextProperty("chartitem",&ch);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)

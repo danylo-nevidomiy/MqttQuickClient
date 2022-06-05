@@ -8,6 +8,9 @@ Rectangle {
     id:root
     property string name;
     property string topic;
+    property int min: -100
+    property int max: 100
+    property int def: 0
     property int column: 0
     property int row: 0
     Layout.fillHeight: true
@@ -25,10 +28,17 @@ Rectangle {
         anchors.fill:parent
         property int value: 0
         onMessageChanged: {
-            baseitem.value = Number(baseitem.m_message)}
+            var val = Number(baseitem.m_message)
+            if(val>=min && val<=max){
+            baseitem.value = val
+            }else if(val<min){
+            baseitem.value = min
+            }else{
+            baseitem.value = max
+            }
+            }
         Rectangle{
             anchors.fill:parent
-            color: "yellow"
             Column {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
@@ -89,6 +99,7 @@ Rectangle {
         }
         Component.onCompleted: {
             baseitem.setTopic(root.topic)
+
         }
     }
 }

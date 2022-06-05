@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.1
 
 Rectangle {
     id:root
+    property string name_field: "Input"
     property string name;
     property string topic;
     property int column: 0
@@ -21,7 +22,11 @@ Rectangle {
             TextField{
             id: textField
             anchors.centerIn: parent
-            placeholderText: qsTr("Text Field")
+            placeholderText: qsTr(name_field)
+            selectByMouse: true
+            Keys.onReturnPressed: {
+            baseitem.publishInTopic(baseitem.m_topic, textField.text)
+            }
         }
         second:Button{
             id: send
