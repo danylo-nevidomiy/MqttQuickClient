@@ -9,7 +9,6 @@ FileDialog {
     nameFilters: ["QML Files (*.qml)"];
     onAccepted: {
         console.log("Selected = " + openDialog.selectedFile)
-//        multiview.push(openDialog.selectedFile)
         board.openSpace(openDialog.selectedFile)
     }
 }

@@ -62,7 +62,7 @@ signals:
 
 public slots:
 void messageReceivedSlot(const QByteArray &message, const QMqttTopicName &topic);
-private:
+protected:
     QMqttClient *m_client;
     QString m_topic;
     QString m_name;

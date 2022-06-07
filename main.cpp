@@ -13,6 +13,8 @@ int main(int argc, char *argv[])
 #endif
     QApplication app(argc, argv);
 
+    app.setOrganizationName("pstgu");
+    app.setOrganizationDomain("pstgu.ru");
 
 //    qmlRegisterType<BoardItem>("BoardItem",1,0,"BoardItem");
     QQmlApplicationEngine engine;

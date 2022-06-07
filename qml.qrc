@@ -6,11 +6,8 @@
         <file>Board.qml</file>
         <file>arrow-upper-right.png</file>
         <file>pngegg.png</file>
-        <file>SwitchItem.qml</file>
-        <file>Input.qml</file>
-        <file>Value.qml</file>
         <file>Space.qml</file>
-        <file>Chart.qml</file>
+        <file>ChartItem.qml</file>
         <file>Widget.qml</file>
         <file>BaseItem.qml</file>
         <file>SwitchNewItem.qml</file>
@@ -22,7 +19,6 @@
         <file>needle_shadow.png</file>
         <file>overlay.png</file>
         <file>ButtonItem.qml</file>
-        <file>SpaceCreator.js</file>
         <file>InitialItem.qml</file>
         <file>OpenDialog.qml</file>
     </qresource>

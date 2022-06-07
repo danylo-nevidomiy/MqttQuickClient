@@ -1,4 +1,4 @@
-QT += qml quick quickwidgets core network mqtt
+QT += qml quick quickwidgets core network mqtt charts
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.

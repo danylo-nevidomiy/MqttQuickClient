@@ -14,6 +14,8 @@ Item{
         {
              console.log("Opening = " + filename)
             multiview.push(filename)
+            settings.lastOpened = filename
+            window.setTitle(getLastOpenedName())
         }
     }
     StackView{

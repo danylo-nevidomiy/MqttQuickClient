@@ -24,12 +24,16 @@ Rectangle{
             name: "Temperature"
             topic: "temp"
         }
-        ButtonItem{
+        ChartItem{
             row: 0
             column: 1
             name: "My new button item"
-            topic: "topic"
-            value: "temp"
+            topic: "temp"
+            maxX:25
+            minX:0
+            maxY:25
+            minY:0
+
         }
         SwitchNewItem{
             row: 0
