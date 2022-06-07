@@ -13,31 +13,36 @@ Rectangle {
     property int def: 0
     property int column: 0
     property int row: 0
+    property int columnSpan: 1
+    property int rowSpan: 1
     Layout.fillHeight: true
     Layout.fillWidth: true
-    Layout.columnSpan: 1
-    Layout.rowSpan: 1
+    Layout.columnSpan: root.columnSpan
+    Layout.rowSpan: root.rowSpan
     Layout.row: root.row
     Layout.column: root.column
 
 
     MqttItem {
         id:baseitem
-//        name:root.name
-//        topic:root.topic
+        //        name:root.name
+        //        topic:root.topic
         anchors.fill:parent
         property int value: 0
+        property int minInd: -110
+        property int maxInd: 110
         onMessageChanged: {
             var val = Number(baseitem.m_message)
             if(val>=min && val<=max){
-            baseitem.value = val
+                baseitem.value = (maxInd-minInd)*val/(max-min)+minInd
             }else if(val<min){
-            baseitem.value = min
+                baseitem.value = min
             }else{
-            baseitem.value = max
+                baseitem.value = max
             }
-            }
+        }
         Rectangle{
+            id:rects
             anchors.fill:parent
             Column {
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -49,6 +54,7 @@ Rectangle {
                 Rectangle{
                     id:first
                     width: baseitem.width; height: baseitem.height-third.height
+
                     Image {
                         anchors.top: parent.top
                         anchors.bottom: parent.bottom
@@ -63,11 +69,11 @@ Rectangle {
                         anchors.verticalCenter: parent.verticalCenter
                         height:parent.height/2
                         width: sourceSize.width/sourceSize.height*needle.height
-//                        anchors.top: parent.top
-//                        anchors.bottom: parent.bottom
-//                        anchors.right: parent.right
-//                        anchors.left: parent.left
-//                        fillMode: Image.PreserveAspectFit
+                        //                        anchors.top: parent.top
+                        //                        anchors.bottom: parent.bottom
+                        //                        anchors.right: parent.right
+                        //                        anchors.left: parent.left
+                        //                        fillMode: Image.PreserveAspectFit
                         antialiasing: true
                         source: "needle.png"
                         transform: Rotation {
@@ -83,17 +89,61 @@ Rectangle {
                             }
                             //! [needle angle]
                         }
-//                         Component.onCompleted: {console.log("n.h: " + needle.height)}
+                        //                         Component.onCompleted: {console.log("n.h: " + needle.height)}
                     }
-//                    Component.onCompleted: {console.log("f.h: " + first.height)}
+                    Label{
+                        id:val
+                        text: baseitem.m_message
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+                        transform: Translate{y: val.y+1}
+                    }
+                    Label{
+                        id:mid
+                        text: (root.max-root.min)/2
+                        anchors.top: first.top
+                        anchors.verticalCenter: first.verticalCenter
+//                        transform: Translate{y: val.y-1}
+                    }
+
+                    //                    Component.onCompleted: {console.log("f.h: " + first.height)}
                 }
                 Rectangle {
                     id:third
                     width: baseitem.width; height: name.height*2
-                    Label {
-                        id: name
-                        text: root.name
-                        anchors.centerIn: parent } }
+                    Row{
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        spacing: parent.width/5
+
+
+                        Label{
+                            id:minValue
+                            text: root.min
+                            font.bold: true
+                            font.pixelSize: 20
+                        }
+
+                        Label {
+                            id: name
+                            text: root.name
+                        }
+
+                        Label{
+                            id:maxValue
+                            text: root.max
+                            font.bold: true
+                            font.pixelSize: 20
+                        }
+
+
+                    }
+                }
+
+
+
+
 
             }
         }

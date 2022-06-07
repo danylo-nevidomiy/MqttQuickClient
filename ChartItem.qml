@@ -14,10 +14,12 @@ Rectangle {
     property int minX: 0
     property int maxY: 20
     property int minY: 0
+    property int columnSpan: 1
+    property int rowSpan: 1
     Layout.fillHeight: true
     Layout.fillWidth: true
-    Layout.columnSpan: 1
-    Layout.rowSpan: 1
+    Layout.columnSpan: chart.columnSpan
+    Layout.rowSpan: chart.rowSpan
     Layout.row: chart.row
     Layout.column: chart.column
 

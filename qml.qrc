@@ -21,5 +21,6 @@
         <file>ButtonItem.qml</file>
         <file>InitialItem.qml</file>
         <file>OpenDialog.qml</file>
+        <file>SliderItem.qml</file>
     </qresource>
 </RCC>
